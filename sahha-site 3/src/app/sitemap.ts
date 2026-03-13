@@ -22,12 +22,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const now = new Date()
   const areaPages = [
+    // Denver Metro
     'home-health-care-centennial-co',
     'home-health-care-denver-co',
     'home-health-care-aurora-co',
     'home-health-care-englewood-co',
-    'home-health-care-greenwood-village-co',
     'home-health-care-littleton-co',
+    'home-health-care-greenwood-village-co',
+    'home-health-care-lakewood-co',
+    'home-health-care-arvada-co',
+    'home-health-care-westminster-co',
+    'home-health-care-thornton-co',
+    'home-health-care-broomfield-co',
+    'home-health-care-parker-co',
+    'home-health-care-castle-rock-co',
+    'home-health-care-highlands-ranch-co',
+    'home-health-care-lone-tree-co',
+    'home-health-care-commerce-city-co',
+    'home-health-care-wheat-ridge-co',
+    // Front Range
+    'home-health-care-colorado-springs-co',
+    'home-health-care-fort-collins-co',
+    'home-health-care-boulder-co',
   ]
   return [
     ...staticRoutes.map((p) => ({

@@ -19,14 +19,61 @@ body {
   color: #0F172A;
   background: #ffffff;
   text-rendering: geometricPrecision;
+  /* Slightly increased base line-height for senior readability */
+  line-height: 1.65;
 }
 
 ::selection {
   background: rgba(0, 186, 220, 0.22);
 }
 
-/* Simple focus styles */
+/* ─── Focus rings ───────────────────────────────────────────────────────────
+   High-contrast, clearly visible focus indicators for keyboard and assistive
+   technology users. Meets WCAG 2.1 SC 2.4.7 and the enhanced SC 2.4.11.
+   ──────────────────────────────────────────────────────────────────────── */
 :focus-visible {
-  outline: 2px solid #00BADC;
-  outline-offset: 2px;
+  outline: 3px solid #00BADC;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Inputs and selects get an inset ring so the outline doesn't shift layout */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #00BADC;
+  outline-offset: 0;
+  box-shadow: 0 0 0 4px rgba(0, 186, 220, 0.25);
+}
+
+/* ─── Touch targets ─────────────────────────────────────────────────────────
+   WCAG 2.5.5 recommends 44×44 px minimum touch targets for senior users.
+   We enforce this on all interactive elements.
+   ──────────────────────────────────────────────────────────────────────── */
+button,
+[type="button"],
+[type="submit"],
+[type="reset"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+input,
+select,
+textarea {
+  min-height: 44px;
+  font-size: 1rem; /* prevents iOS auto-zoom on focus (requires >= 16px) */
+}
+
+/* Inline links get a generous hit area via padding without changing visual spacing */
+a {
+  text-underline-offset: 3px;
+}
+
+nav a,
+header a,
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }

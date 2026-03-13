@@ -2,8 +2,8 @@ import { ContactForm } from '@/components/forms/ContactForm'
 import { brand } from '@/theme/brand'
 
 export const metadata = {
-  title: 'Contact Us',
-  description: 'Contact Sahha Home Health Care to request care, ask questions, or schedule a consultation.',
+  title: 'Contact Sahha Home Health Care | Denver & Aurora, Colorado',
+  description: 'Contact Sahha Home Health Care for in-home care services in Denver, Aurora, Centennial, and Colorado. Call (720) 404-0335 or send a message — we respond within 24 hours.',
 }
 
 export default function ContactPage() {

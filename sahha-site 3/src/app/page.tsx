@@ -155,14 +155,14 @@ export default function HomePage() {
             <div className="relative">
               <div className="grid grid-cols-12 gap-4">
                 <div className="col-span-7 overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-slate-200">
-                  <Image src="/images/story.jpg" alt="Nurse speaking with a client at home" width={900} height={900} className="h-full w-full object-cover" />
+                  <Image src="/images/story.jpg" alt="Home health care nurse speaking with an elderly client in Centennial, Colorado" width={900} height={900} className="h-full w-full object-cover" />
                 </div>
                 <div className="col-span-5 grid gap-4">
                   <div className="overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-slate-200">
                     <Image src="/images/medication.jpg" alt="Medication support and reminders" width={700} height={700} className="h-full w-full object-cover" />
                   </div>
                   <div className="overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-slate-200">
-                    <Image src="/images/caregiver-walk.jpg" alt="Caregiver walking with an older adult" width={700} height={700} className="h-full w-full object-cover" />
+                    <Image src="/images/caregiver-walk.jpg" alt="In-home caregiver walking with an older adult in Denver, Colorado" width={700} height={700} className="h-full w-full object-cover" />
                   </div>
                 </div>
               </div>
@@ -273,7 +273,7 @@ export default function HomePage() {
 
             <FadeIn>
               <div className="relative overflow-hidden rounded-3xl ring-1 ring-white/10">
-                <Image src="/images/team.jpg" alt="Sahha care team" width={1200} height={900} className="h-full w-full object-cover" />
+                <Image src="/images/team.jpg" alt="Sahha Home Health Care team — skilled in-home caregivers serving Denver, Aurora, and Centennial, Colorado" width={1200} height={900} className="h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6 rounded-3xl bg-white/10 p-5 text-white ring-1 ring-white/15 backdrop-blur">
                   <div className="flex items-center gap-2 text-sm font-semibold text-white/90">

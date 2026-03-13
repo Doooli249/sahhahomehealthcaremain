@@ -6,13 +6,14 @@ const services = [
   'Personal Care Services',
   'Homemaker Services',
   'Companionship & Safety Supervision',
-  'Alzheimer’s & Dementia Care',
+  'Alzheimer\u2019s & Dementia Care',
   'Medicaid Waiver Program Support',
   'Respite Care',
   'Hospice & Palliative Support',
   'Medication Reminders',
   'Mobility and Transfer Assistance',
   'Caregiver Education & Family Support',
+  'Not sure — need guidance',
 ]
 
 export function AppointmentForm() {
@@ -52,40 +53,106 @@ export function AppointmentForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="rounded-2xl border bg-white p-6 shadow-sm">
+    <form onSubmit={onSubmit} noValidate>
       <div className="grid gap-4 md:grid-cols-2">
         <div className="md:col-span-2">
-          <label className="text-sm font-semibold">Name</label>
-          <input name="name" required className="mt-1 w-full rounded-xl border px-3 py-2" />
+          <label htmlFor="af-name" className="text-sm font-semibold text-slate-800">
+            Your name <span aria-hidden="true" className="text-red-500">*</span>
+          </label>
+          <input
+            id="af-name"
+            name="name"
+            required
+            aria-required="true"
+            autoComplete="name"
+            placeholder="Jane Smith"
+            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-slate-900 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/30"
+          />
         </div>
         <div>
-          <label className="text-sm font-semibold">Email</label>
-          <input name="email" type="email" required className="mt-1 w-full rounded-xl border px-3 py-2" />
+          <label htmlFor="af-email" className="text-sm font-semibold text-slate-800">
+            Email address <span aria-hidden="true" className="text-red-500">*</span>
+          </label>
+          <input
+            id="af-email"
+            name="email"
+            type="email"
+            required
+            aria-required="true"
+            autoComplete="email"
+            placeholder="jane@example.com"
+            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-slate-900 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/30"
+          />
         </div>
         <div>
-          <label className="text-sm font-semibold">Phone</label>
-          <input name="phone" required className="mt-1 w-full rounded-xl border px-3 py-2" />
+          <label htmlFor="af-phone" className="text-sm font-semibold text-slate-800">
+            Phone number <span aria-hidden="true" className="text-red-500">*</span>
+          </label>
+          <input
+            id="af-phone"
+            name="phone"
+            type="tel"
+            required
+            aria-required="true"
+            autoComplete="tel"
+            placeholder="(720) 555-0100"
+            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-slate-900 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/30"
+          />
         </div>
         <div>
-          <label className="text-sm font-semibold">Preferred date</label>
-          <input name="preferredDate" type="date" required className="mt-1 w-full rounded-xl border px-3 py-2" />
+          <label htmlFor="af-date" className="text-sm font-semibold text-slate-800">
+            Preferred date <span aria-hidden="true" className="text-red-500">*</span>
+          </label>
+          <input
+            id="af-date"
+            name="preferredDate"
+            type="date"
+            required
+            aria-required="true"
+            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-slate-900 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/30"
+          />
         </div>
         <div>
-          <label className="text-sm font-semibold">Preferred time</label>
-          <input name="preferredTime" type="time" required className="mt-1 w-full rounded-xl border px-3 py-2" />
+          <label htmlFor="af-time" className="text-sm font-semibold text-slate-800">
+            Preferred time <span aria-hidden="true" className="text-red-500">*</span>
+          </label>
+          <input
+            id="af-time"
+            name="preferredTime"
+            type="time"
+            required
+            aria-required="true"
+            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-slate-900 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/30"
+          />
         </div>
         <div className="md:col-span-2">
-          <label className="text-sm font-semibold">Service interest</label>
-          <select name="serviceInterest" required className="mt-1 w-full rounded-xl border px-3 py-2">
+          <label htmlFor="af-service" className="text-sm font-semibold text-slate-800">
+            Service interest <span aria-hidden="true" className="text-red-500">*</span>
+          </label>
+          <select
+            id="af-service"
+            name="serviceInterest"
+            required
+            aria-required="true"
+            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-slate-900 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/30"
+          >
             <option value="">Select a service...</option>
             {services.map(s => <option key={s} value={s}>{s}</option>)}
           </select>
         </div>
         <div className="md:col-span-2">
-          <label className="text-sm font-semibold">Notes (optional)</label>
-          <textarea name="notes" rows={4} className="mt-1 w-full rounded-xl border px-3 py-2" placeholder="Any details that would help us prepare..." />
+          <label htmlFor="af-notes" className="text-sm font-semibold text-slate-800">
+            Notes <span className="text-slate-400 font-normal">(optional)</span>
+          </label>
+          <textarea
+            id="af-notes"
+            name="notes"
+            rows={4}
+            placeholder="Any details that would help us prepare — location, specific needs, questions..."
+            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-slate-900 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/30"
+          />
         </div>
-        <div className="hidden">
+        <div className="hidden" aria-hidden="true">
           <label>Company</label>
           <input name="company" tabIndex={-1} autoComplete="off" />
         </div>
@@ -95,20 +162,20 @@ export function AppointmentForm() {
         <button
           type="submit"
           disabled={status==='sending'}
-          className="rounded-full bg-brand-primary px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-primaryDark disabled:opacity-60"
+          className="rounded-full bg-brand-primary px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-primary/25 hover:bg-brand-primaryDark focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 disabled:opacity-60"
         >
           {status==='sending' ? 'Sending...' : 'Request Appointment'}
         </button>
-        <p className="text-sm text-slate-600">No obligation. We’ll confirm by phone or email.</p>
+        <p className="text-sm text-slate-500">No obligation. We&apos;ll confirm by phone or email.</p>
       </div>
 
       {status==='success' ? (
-        <p className="mt-4 rounded-xl bg-green-50 px-4 py-3 text-sm text-green-800">
-          Thanks — we received your request. We’ll reach out to confirm a time.
+        <p role="status" className="mt-4 rounded-xl bg-green-50 px-4 py-3 text-sm font-medium text-green-800">
+          ✓ Thanks — we received your request. We&apos;ll reach out to confirm a time.
         </p>
       ) : null}
       {status==='error' ? (
-        <p className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-800">{error}</p>
+        <p role="alert" className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm font-medium text-red-800">{error}</p>
       ) : null}
     </form>
   )

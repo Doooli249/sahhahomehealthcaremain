@@ -2,8 +2,8 @@ import { AppointmentForm } from '@/components/forms/AppointmentForm'
 import { brand } from '@/theme/brand'
 
 export const metadata = {
-  title: 'Book Appointment',
-  description: 'Request an in-home care consultation with Sahha Home Health Care.',
+  title: 'Book a Free In-Home Care Consultation | Denver & Aurora, CO',
+  description: 'Schedule your free, no-obligation in-home care consultation with Sahha Home Health Care. Serving Denver, Aurora, Centennial, Englewood, Littleton, and greater Colorado.',
 }
 
 export default function BookAppointmentPage() {

@@ -5,7 +5,7 @@ import { FadeIn } from '@/components/motion/FadeIn'
 import { ArrowRight } from 'lucide-react'
 
 export const metadata = {
-  title: 'Home Care Services',
+  title: 'In-Home Care Services in Denver & Aurora, Colorado | Sahha',
   description: 'Explore Sahha Home Health Care services including personal care, homemaker services, companionship, Alzheimer’s support, respite care, and more.',
 }
 
@@ -14,7 +14,7 @@ export default function ServicesPage() {
     <section className="bg-white">
       <div className="mx-auto max-w-6xl px-4 py-16">
         <FadeIn>
-          <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">Services</h1>
+          <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">In-Home Care Services in Denver, Aurora &amp; Colorado</h1>
           <p className="mt-4 max-w-3xl text-slate-700">
             Explore our top services — compassionate, structured support designed to protect dignity and strengthen independence at home.
           </p>

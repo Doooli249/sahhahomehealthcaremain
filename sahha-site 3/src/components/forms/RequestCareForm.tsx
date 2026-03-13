@@ -6,7 +6,7 @@ const subjects = [
   'Personal Care Services',
   'Homemaker Services',
   'Companionship & Safety Supervision',
-  'Alzheimer’s & Dementia Care',
+  'Alzheimer\u2019s & Dementia Care',
   'Medicaid Waiver Program Support',
   'Respite Care',
   'Hospice & Palliative Support',
@@ -54,37 +54,95 @@ export function RequestCareForm({ sourcePage = 'home' }: { sourcePage?: string }
   }
 
   return (
-    <form onSubmit={onSubmit} className="rounded-2xl border bg-white p-6 shadow-sm">
+    <form onSubmit={onSubmit} noValidate>
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="text-sm font-semibold">First name</label>
-          <input name="firstName" required className="mt-1 w-full rounded-xl border px-3 py-2" />
+          <label htmlFor="rc-firstName" className="text-sm font-semibold text-slate-800">
+            First name <span aria-hidden="true" className="text-red-500">*</span>
+          </label>
+          <input
+            id="rc-firstName"
+            name="firstName"
+            required
+            aria-required="true"
+            autoComplete="given-name"
+            placeholder="Jane"
+            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-slate-900 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/30"
+          />
         </div>
         <div>
-          <label className="text-sm font-semibold">Last name (optional)</label>
-          <input name="lastName" className="mt-1 w-full rounded-xl border px-3 py-2" />
+          <label htmlFor="rc-lastName" className="text-sm font-semibold text-slate-800">
+            Last name <span className="text-slate-400 font-normal">(optional)</span>
+          </label>
+          <input
+            id="rc-lastName"
+            name="lastName"
+            autoComplete="family-name"
+            placeholder="Smith"
+            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-slate-900 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/30"
+          />
         </div>
         <div>
-          <label className="text-sm font-semibold">Email</label>
-          <input name="email" type="email" required className="mt-1 w-full rounded-xl border px-3 py-2" />
+          <label htmlFor="rc-email" className="text-sm font-semibold text-slate-800">
+            Email address <span aria-hidden="true" className="text-red-500">*</span>
+          </label>
+          <input
+            id="rc-email"
+            name="email"
+            type="email"
+            required
+            aria-required="true"
+            autoComplete="email"
+            placeholder="jane@example.com"
+            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-slate-900 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/30"
+          />
         </div>
         <div>
-          <label className="text-sm font-semibold">Phone</label>
-          <input name="phone" required className="mt-1 w-full rounded-xl border px-3 py-2" />
+          <label htmlFor="rc-phone" className="text-sm font-semibold text-slate-800">
+            Phone number <span aria-hidden="true" className="text-red-500">*</span>
+          </label>
+          <input
+            id="rc-phone"
+            name="phone"
+            type="tel"
+            required
+            aria-required="true"
+            autoComplete="tel"
+            placeholder="(720) 555-0100"
+            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-slate-900 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/30"
+          />
         </div>
         <div className="md:col-span-2">
-          <label className="text-sm font-semibold">Service interest</label>
-          <select name="subject" required className="mt-1 w-full rounded-xl border px-3 py-2">
+          <label htmlFor="rc-subject" className="text-sm font-semibold text-slate-800">
+            Service interest <span aria-hidden="true" className="text-red-500">*</span>
+          </label>
+          <select
+            id="rc-subject"
+            name="subject"
+            required
+            aria-required="true"
+            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-slate-900 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/30"
+          >
             <option value="">Select a service...</option>
             {subjects.map(s => <option key={s} value={s}>{s}</option>)}
           </select>
         </div>
         <div className="md:col-span-2">
-          <label className="text-sm font-semibold">Message</label>
-          <textarea name="message" required rows={4} className="mt-1 w-full rounded-xl border px-3 py-2" placeholder="Tell us a bit about the support you need..." />
+          <label htmlFor="rc-message" className="text-sm font-semibold text-slate-800">
+            Tell us about your needs <span aria-hidden="true" className="text-red-500">*</span>
+          </label>
+          <textarea
+            id="rc-message"
+            name="message"
+            required
+            aria-required="true"
+            rows={4}
+            placeholder="E.g. My mother needs help with bathing and meals a few days a week in Centennial, CO..."
+            className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 text-slate-900 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/30"
+          />
         </div>
         {/* Honeypot */}
-        <div className="hidden">
+        <div className="hidden" aria-hidden="true">
           <label>Company</label>
           <input name="company" tabIndex={-1} autoComplete="off" />
         </div>
@@ -94,20 +152,20 @@ export function RequestCareForm({ sourcePage = 'home' }: { sourcePage?: string }
         <button
           type="submit"
           disabled={status==='sending'}
-          className="rounded-full bg-brand-primary px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-primaryDark disabled:opacity-60"
+          className="rounded-full bg-brand-primary px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-primary/25 hover:bg-brand-primaryDark focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 disabled:opacity-60"
         >
           {status==='sending' ? 'Sending...' : 'Request Care Today'}
         </button>
-        <p className="text-sm text-slate-600">No obligation. Confidential. Response within 24 hours.</p>
+        <p className="text-sm text-slate-500">No obligation. Confidential. Response within 24 hours.</p>
       </div>
 
       {status==='success' ? (
-        <p className="mt-4 rounded-xl bg-green-50 px-4 py-3 text-sm text-green-800">
-          Thanks — we received your request. A care coordinator will reach out shortly.
+        <p role="status" className="mt-4 rounded-xl bg-green-50 px-4 py-3 text-sm font-medium text-green-800">
+          ✓ Thanks — we received your request. A care coordinator will reach out shortly.
         </p>
       ) : null}
       {status==='error' ? (
-        <p className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-800">{error}</p>
+        <p role="alert" className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm font-medium text-red-800">{error}</p>
       ) : null}
     </form>
   )

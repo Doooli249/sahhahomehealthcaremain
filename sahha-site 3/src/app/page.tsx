@@ -13,14 +13,45 @@ import { HeartHandshake, ShieldCheck, Users, Sparkles, ArrowRight, MapPin } from
 export const dynamic = 'force-static'
 export const revalidate = 3600
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sahhahomehealthcare.com'
+
 export default function HomePage() {
+  const organization = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: brand.name,
+    url: siteUrl,
+    logo: `${siteUrl}/logo.png`,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'Customer Service',
+      telephone: brand.phone,
+      areaServed: 'US',
+      availableLanguage: 'English',
+    },
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Centennial',
+      addressRegion: 'CO',
+      addressCountry: 'US',
+    },
+  }
+
   const medicalBusiness = {
     '@context': 'https://schema.org',
     '@type': 'MedicalBusiness',
     name: brand.name,
+    url: siteUrl,
     telephone: brand.phone,
+    image: `${siteUrl}/og-image.jpg`,
     areaServed: brand.serviceArea,
     medicalSpecialty: 'HomeHealth',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Centennial',
+      addressRegion: 'CO',
+      addressCountry: 'US',
+    },
   }
 
   const faq = {
@@ -64,6 +95,7 @@ export default function HomePage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(medicalBusiness) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
 

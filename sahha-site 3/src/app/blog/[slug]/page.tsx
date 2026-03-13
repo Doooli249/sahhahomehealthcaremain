@@ -2,10 +2,31 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { posts } from '@/lib/blog'
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sahhahomehealthcare.com'
+
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const p = posts.find((x) => x.slug === params.slug)
-  if (!p) return { title: 'Blog' }
-  return { title: p.title, description: p.excerpt }
+  if (!p) return { title: 'Blog | Sahha Home Health Care', description: 'Home health care insights and resources.' }
+  const url = `${siteUrl}/blog/${p.slug}`
+  return {
+    title: p.title,
+    description: p.excerpt,
+    alternates: { canonical: url },
+    openGraph: {
+      title: p.title,
+      description: p.excerpt,
+      type: 'article',
+      url,
+      publishedTime: p.date,
+      images: [{ url: `${siteUrl}/og-image.jpg`, width: 1200, height: 630, alt: p.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: p.title,
+      description: p.excerpt,
+      images: [`${siteUrl}/og-image.jpg`],
+    },
+  }
 }
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
